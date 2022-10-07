@@ -21,7 +21,25 @@ namespace MoreTech.Parser
 
     public class Parser
     {
-        public async IAsyncEnumerable<ParseResult> ParseRSS(string rssUrl, string querySelector)
+        public async Task<string> ParseHTML(string url, string querySelector)
+        {
+            var htmlClient = new HttpClient();
+            var htmlResponse = await htmlClient.GetAsync(url);
+
+            if (htmlResponse != null && htmlResponse.StatusCode == HttpStatusCode.OK)
+            {
+                var rawHtml = await htmlResponse.Content.ReadAsStringAsync();
+                var htmlParser = new HtmlParser();
+                var html = await htmlParser.ParseDocumentAsync(rawHtml);
+                var paragraphs = html.QuerySelectorAll(querySelector)
+                    .Select(p => p.TextContent);
+                var text = string.Concat(paragraphs);
+                return text;
+            }
+            return null;
+        }
+
+        public async IAsyncEnumerable<(string link, string title, string pubDate)> ParseRSS(string rssUrl)
         {
             var xmlClient = new HttpClient();
             var xmlResponse = await xmlClient.GetAsync(rssUrl);
@@ -38,25 +56,7 @@ namespace MoreTech.Parser
                     var link = n.SelectSingleNode("link").InnerText;
                     var title = n.SelectSingleNode("title").InnerText;
                     var pubdate = n.SelectSingleNode("pubDate").InnerText;
-
-                    var htmlClient = new HttpClient();
-                    var htmlResponse = await htmlClient.GetAsync(link);
-                    if (htmlResponse != null && htmlResponse.StatusCode == HttpStatusCode.OK)
-                    {
-                        var rawHtml = await htmlResponse.Content.ReadAsStringAsync();
-                        var htmlParser = new HtmlParser();
-                        var html = await htmlParser.ParseDocumentAsync(rawHtml);
-                        var paragraphs = html.QuerySelectorAll(querySelector)
-                            .Select(p => p.TextContent);
-                        var text = string.Concat(paragraphs);
-                        yield return new ParseResult()
-                        {
-                            Text = text,
-                            Title = title,
-                            Url = link,
-                            PublicationDate = DateTime.Parse(pubdate)
-                        };
-                    }
+                    yield return (link, title, pubdate);
                 }
             }
             yield break;

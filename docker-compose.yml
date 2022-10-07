@@ -1,0 +1,8 @@
+version: "3.9"
+services:
+  parser-service:
+    build: src/parser/
+  api-server-service:
+    build: src/api-server/
+    ports:
+      - "8080:8080"

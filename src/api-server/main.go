@@ -1,24 +1,27 @@
 package api
 
 import (
-	"io/ioutil"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
 type responseDescription struct {
-	Role int `json:"Role"	`
+	Role   string `json:"role"	`
+	Trends string `json:"newsOrTrand"	`
 }
 
 func addTodo(context *gin.Context) {
-	body := context.Request.Body
-	x, _ := ioutil.ReadAll(body)
-	// jsonData, err := json.Marshal(response)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	result := Execute(string(x))
+	var Thing responseDescription
+	if err := context.BindJSON(&Thing); err != nil {
+		return
+	}
+	result := Execute(Thing.Trends, Thing.Role)
+
+	// body := context.Request.Body
+	// x, _ := ioutil.ReadAll(body)
+
+	// result := Execute(string(x))
 	context.IndentedJSON(http.StatusCreated, result)
 }
 

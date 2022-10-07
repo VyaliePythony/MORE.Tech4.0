@@ -12,12 +12,12 @@ import (
 
 var result string
 
-func Execute(param string) string {
+func Execute(Trends string, Role string) string {
 	directory, err := os.Getwd()
 	if err != nil {
 		log.Println(err)
 	}
-	cmd := exec.Command("python", path.Join(filepath.Dir(directory), "/model", "main.py"), param)
+	cmd := exec.Command("python", path.Join(filepath.Dir(directory), "/model", "main.py"), Trends, Role)
 	stdout, err := cmd.StdoutPipe()
 	if err != nil {
 		panic(err)

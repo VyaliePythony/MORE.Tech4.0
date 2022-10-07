@@ -9,5 +9,4 @@ await foreach (var result in parser.ParseRSS("https://www.vedomosti.ru/rss/rubri
     Console.WriteLine(result.Title);
     Console.WriteLine(result.Text);
     Console.ReadLine();
-    //
 }

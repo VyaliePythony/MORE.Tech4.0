@@ -185,11 +185,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Skori\\source\\repos\\MoreTech.Parser\\MoreTech.Parser\\MoreTech.Parser.csproj",
+      "projectUniqueName": "C:\\Users\\Skori\\Source\\Repos\\MORE.Tech\\src\\parser\\MoreTech.Parser\\MoreTech.Parser\\MoreTech.Parser.csproj",
       "projectName": "MoreTech.Parser",
-      "projectPath": "C:\\Users\\Skori\\source\\repos\\MoreTech.Parser\\MoreTech.Parser\\MoreTech.Parser.csproj",
+      "projectPath": "C:\\Users\\Skori\\Source\\Repos\\MORE.Tech\\src\\parser\\MoreTech.Parser\\MoreTech.Parser\\MoreTech.Parser.csproj",
       "packagesPath": "C:\\Users\\Skori\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Skori\\source\\repos\\MoreTech.Parser\\MoreTech.Parser\\obj\\",
+      "outputPath": "C:\\Users\\Skori\\Source\\Repos\\MORE.Tech\\src\\parser\\MoreTech.Parser\\MoreTech.Parser\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Skori\\AppData\\Roaming\\NuGet\\NuGet.Config",

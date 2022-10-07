@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hDKwiE4CECD5oGokbd7oXnTc7aaE6J35kPfF5qNJT7n9rATa0EvKZxatXRAq32gbNgx+R4aOlmWW+wv+mxqsSg==",
+  "dgSpecHash": "MroqGdrZvo2AGEF1B6+sRvmwBQ5is4O3Ql0vV6CaRyOLqvvDh2Px+RJgxafSPSJPiTNz+WYsRhfvamVR6JQZvQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Skori\\source\\repos\\MoreTech.Parser\\MoreTech.Parser\\MoreTech.Parser.csproj",
+  "projectFilePath": "C:\\Users\\Skori\\Source\\Repos\\MORE.Tech\\src\\parser\\MoreTech.Parser\\MoreTech.Parser\\MoreTech.Parser.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Skori\\.nuget\\packages\\anglesharp\\0.17.1\\anglesharp.0.17.1.nupkg.sha512",
     "C:\\Users\\Skori\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",

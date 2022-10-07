@@ -3,4 +3,4 @@ WORKDIR /go/moretech
 COPY . .
 RUN go build -o app
 EXPOSE 8080
-# CMD ["/go/moretech/app"]
+CMD ["/go/moretech/app"]

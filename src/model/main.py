@@ -1,0 +1,1 @@
+# model.py shell, executable by golang server. Sort posts or trends

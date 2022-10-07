@@ -1,0 +1,17 @@
+C:\Users\Skori\source\repos\MoreTech.Parser\MoreTech.Parser\bin\Debug\net6.0\MoreTech.Parser.exe
+C:\Users\Skori\source\repos\MoreTech.Parser\MoreTech.Parser\bin\Debug\net6.0\MoreTech.Parser.deps.json
+C:\Users\Skori\source\repos\MoreTech.Parser\MoreTech.Parser\bin\Debug\net6.0\MoreTech.Parser.runtimeconfig.json
+C:\Users\Skori\source\repos\MoreTech.Parser\MoreTech.Parser\bin\Debug\net6.0\MoreTech.Parser.dll
+C:\Users\Skori\source\repos\MoreTech.Parser\MoreTech.Parser\bin\Debug\net6.0\MoreTech.Parser.pdb
+C:\Users\Skori\source\repos\MoreTech.Parser\MoreTech.Parser\bin\Debug\net6.0\AngleSharp.dll
+C:\Users\Skori\source\repos\MoreTech.Parser\MoreTech.Parser\obj\Debug\net6.0\MoreTech.Parser.csproj.AssemblyReference.cache
+C:\Users\Skori\source\repos\MoreTech.Parser\MoreTech.Parser\obj\Debug\net6.0\MoreTech.Parser.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Skori\source\repos\MoreTech.Parser\MoreTech.Parser\obj\Debug\net6.0\MoreTech.Parser.AssemblyInfoInputs.cache
+C:\Users\Skori\source\repos\MoreTech.Parser\MoreTech.Parser\obj\Debug\net6.0\MoreTech.Parser.AssemblyInfo.cs
+C:\Users\Skori\source\repos\MoreTech.Parser\MoreTech.Parser\obj\Debug\net6.0\MoreTech.Parser.csproj.CoreCompileInputs.cache
+C:\Users\Skori\source\repos\MoreTech.Parser\MoreTech.Parser\obj\Debug\net6.0\MoreTech.Parser.csproj.CopyComplete
+C:\Users\Skori\source\repos\MoreTech.Parser\MoreTech.Parser\obj\Debug\net6.0\MoreTech.Parser.dll
+C:\Users\Skori\source\repos\MoreTech.Parser\MoreTech.Parser\obj\Debug\net6.0\refint\MoreTech.Parser.dll
+C:\Users\Skori\source\repos\MoreTech.Parser\MoreTech.Parser\obj\Debug\net6.0\MoreTech.Parser.pdb
+C:\Users\Skori\source\repos\MoreTech.Parser\MoreTech.Parser\obj\Debug\net6.0\MoreTech.Parser.genruntimeconfig.cache
+C:\Users\Skori\source\repos\MoreTech.Parser\MoreTech.Parser\obj\Debug\net6.0\ref\MoreTech.Parser.dll

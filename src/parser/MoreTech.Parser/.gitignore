@@ -17,7 +17,7 @@
 mono_crash.*
 
 # Build results
-src/parser/MoreTech.Parser/MoreTech.Parser/obj/[Dd]ebug/
+MoreTech.Parser/src/parser/MoreTech.Parser/MoreTech.Parser/obj/[Dd]ebug/
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/

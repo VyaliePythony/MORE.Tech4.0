@@ -1,4 +1,4 @@
-package api
+package scripts
 
 import (
 	"bufio"

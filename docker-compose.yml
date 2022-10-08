@@ -8,7 +8,7 @@ services:
     volumes:
       - ./appdata:/appdata
     environment:
-     - REDIS_DB=redis:6379
+     - REDIS-DB=redis:6379
 
   api-server:
     container_name: server

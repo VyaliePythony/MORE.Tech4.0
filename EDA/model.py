@@ -18,13 +18,13 @@ class Model:
         :param n_news: кол-во новостей в ответе
         :return: см. на сигнатуру функции
         """
-        return "news"
+        pass
 
     def trends(self) -> List[str]:
         """
         :return: 5 популярных трендов
         """
-        return "trends"
+        pass
 
     def add_role(self):
         """

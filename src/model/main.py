@@ -1,5 +1,5 @@
 import sys
-import model
+from model import Model
 import preprocessing
 import os.path
 
@@ -7,15 +7,17 @@ PARSED_DATA = "data.csv"
 DATASET = "dataset.csv"
 DATAPATH = "/go/moretech/appdata/"
 
-def main(query_type=None, role=None):
+postModel = Model()
+
+def main(query_type, role):
     if not os.path.isfile(DATAPATH+DATASET):
         preprocessing.preprocess()
     if query_type == "digest":
-        res = model.digest(role)
+        res = postModel.news(role, 3)
         print(res)
         return 0
     elif query_type == "trends":
-        res = model.trends()
+        res = postModel.trends()
         print(res)
         return 0
     elif query_type == "preprocess":

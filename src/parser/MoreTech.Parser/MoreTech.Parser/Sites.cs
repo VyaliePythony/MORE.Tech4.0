@@ -6,13 +6,23 @@ using System.Threading.Tasks;
 
 namespace MoreTech.Parser
 {
+    /// <summary>
+    /// селектор для выделения текста на сайте 1
+    /// ссылка на RSS 1
+    /// ссылка на RSS 2
+    /// ### разделитель
+    /// селектор для выделения текста на сайте 2
+    /// ссылка на RSS 1
+    /// ссылка на RSS 2
+    /// </summary>
     public static class Sites
     {
         public static string All =
 @"p.box-paragraph__text
 https://www.vedomosti.ru/rss/rubric/economics
-https://www.vedomosti.ru/rss/rubric/economics/macro
-https://www.vedomosti.ru/rss/rubric/economics/state_investments
-###";
+###
+p
+https://news.ru/rss/category/post/economics";
+
     }
 }

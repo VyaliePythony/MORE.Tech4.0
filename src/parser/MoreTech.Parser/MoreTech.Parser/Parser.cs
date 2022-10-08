@@ -19,16 +19,17 @@ namespace MoreTech.Parser
     }
 
 
-    public class Parser
+    public static class Parser
     {
-        public async Task<string> ParseHTML(string url, string querySelector)
+        public static async Task<string> ParseHTML(string url, string querySelector)
         {
             using (var htmlClient = new HttpClient())
             {
+                htmlClient.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:69.0) Gecko/20100101 Firefox/69.0");
                 try
                 {
                     var htmlResponse = await htmlClient.GetAsync(url).ConfigureAwait(false);
-
+                    Console.WriteLine($"{url} responsed with {htmlResponse.StatusCode}.");
                     if (htmlResponse != null && htmlResponse.StatusCode == HttpStatusCode.OK)
                     {
                         var rawHtml = await htmlResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -49,7 +50,7 @@ namespace MoreTech.Parser
             return null;
         }
 
-        public async Task<IEnumerable<(string link, string title, string pubDate)>> ParseRSS(string rssUrl)
+        public static async Task<IEnumerable<(string link, string title, string pubDate)>> ParseRSS(string rssUrl)
         {
             using (var xmlClient = new HttpClient())
             {
@@ -69,7 +70,7 @@ namespace MoreTech.Parser
                         foreach (XmlNode n in node.SelectNodes("item"))
                         {
                             var link = n.SelectSingleNode("link").InnerText;
-                            var title = n.SelectSingleNode("title").InnerText;
+                            var title = RemoveCDATA(n.SelectSingleNode("title").InnerText);
                             var pubdate = n.SelectSingleNode("pubDate").InnerText;
                             list.Add((link, title, pubdate));
                         }
@@ -85,9 +86,19 @@ namespace MoreTech.Parser
             return null;
         }
 
-        public ParseResult ParseRaw(IHtmlDocument document)
+        public static ParseResult ParseRaw(IHtmlDocument document)
         {
             throw new NotImplementedException();
+        }
+
+        private static string RemoveCDATA(string str)
+        {
+            string result = "";
+            str = str.Replace("CDATA", "");
+            str = str.Replace("!", "");
+            str = str.Replace("[", "");
+            str = str.Replace("]", "");
+            return str;
         }
     }
 }

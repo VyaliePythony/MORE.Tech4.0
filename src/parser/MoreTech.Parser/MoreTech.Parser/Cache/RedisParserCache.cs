@@ -45,6 +45,8 @@ namespace MoreTech.Parser.Cache
                 new HashEntry("Title", value.Title),
                 new HashEntry("Text", value.Text)
             };
+            if (value.Url == null || value.Title == null || value.Text == null)
+                return;
             await _db.HashSetAsync(key, hash);
         }
     }

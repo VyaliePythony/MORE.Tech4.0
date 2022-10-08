@@ -11,4 +11,4 @@ https://www.vedomosti.ru/rss/rubric/finance/markets
 https://www.vedomosti.ru/rss/rubric/finance/players
 https://www.vedomosti.ru/rss/rubric/finance/insurance
 https://www.vedomosti.ru/rss/rubric/finance/personal_finance
-#
+###

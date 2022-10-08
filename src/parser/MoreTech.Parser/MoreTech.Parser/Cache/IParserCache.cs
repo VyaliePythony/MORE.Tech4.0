@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace MoreTech.Parser.Cache
 {
-    public interface IParserCache
+    public interface IParserCache<TKey, TValue>
     {
-        Task<bool> ContainsAsync(string key);
-        Task<string?> GetAsync(string key);
-        Task SetAsync(string key, string value);
+        Task<bool> ContainsAsync(TKey key);
+        Task<TValue?> GetAsync(TKey key);
+        Task SetAsync(TKey key, TValue value);
     }
 }

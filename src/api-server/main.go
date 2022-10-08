@@ -1,9 +1,9 @@
 package main
 
 import (
+	"module/src/api-server/scripts"
 	"net/http"
 
-	"example.com/MORE.Tech4.0/src/api-server/scripts"
 	"github.com/gin-gonic/gin"
 )
 

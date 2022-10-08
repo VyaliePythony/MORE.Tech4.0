@@ -1,4 +1,4 @@
-module example.com/MORE.Tech4.0
+module module
 
 go 1.19
 

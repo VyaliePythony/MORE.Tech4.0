@@ -1,8 +1,9 @@
-package api
+package main
 
 import (
 	"net/http"
 
+	"example.com/MORE.Tech4.0/src/api-server/scripts"
 	"github.com/gin-gonic/gin"
 )
 
@@ -16,7 +17,7 @@ func addTodo(context *gin.Context) {
 	if err := context.BindJSON(&Thing); err != nil {
 		return
 	}
-	result := Execute(Thing.Trends, Thing.Role)
+	result := scripts.Execute(Thing.Trends, Thing.Role)
 
 	// body := context.Request.Body
 	// x, _ := ioutil.ReadAll(body)

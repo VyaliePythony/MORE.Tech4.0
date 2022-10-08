@@ -1,4 +1,4 @@
-FROM golang:1.19.1-alpine3.16
+FROM golang:1.19.2-bullseye
 WORKDIR /go/moretech
 
 WORKDIR /go/moretech/api-server
@@ -6,11 +6,12 @@ COPY api-server/ .
 WORKDIR /go/moretech/model
 COPY model/ .
 
+RUN apt-get update
+RUN apt-get -y install python3
+RUN apt-get -y install python3-setuptools
+RUN apt-get -y install python3-pip
+
 WORKDIR /go/moretech/model
-ENV PYTHONUNBUFFERED=1
-RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
-RUN python3 -m ensurepip
-RUN pip3 install --no-cache --upgrade pip setuptools
 RUN pip3 install -r requirments.txt
 
 WORKDIR /go/moretech/api-server

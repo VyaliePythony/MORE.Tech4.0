@@ -44,7 +44,7 @@ while (true)
                         var newString = $"\"{result.Url}\";\"{result.Title}\";\"{result.Text}\";\"{result.PublicationDate}\"\n";
                         lock (_lock)
                         {
-                            File.AppendAllText("pathToFile", newString);
+                            File.AppendAllText(pathToFile, newString);
                         }
                         return result;
                     };
@@ -56,7 +56,7 @@ while (true)
                     var newString = $"\"{existingNews.Url}\";\"{existingNews.Title}\";\"{existingNews.Text}\";\"{existingNews.PublicationDate}\"\n";
                     lock (_lock)
                     {
-                        File.AppendAllText("pathToFile", newString);
+                        File.AppendAllText(pathToFile, newString);
                     }
                 }
             }

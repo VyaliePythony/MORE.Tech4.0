@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "MoreTech.Parser": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

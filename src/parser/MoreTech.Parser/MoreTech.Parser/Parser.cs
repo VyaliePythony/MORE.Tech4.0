@@ -23,43 +23,49 @@ namespace MoreTech.Parser
     {
         public async Task<string> ParseHTML(string url, string querySelector)
         {
-            var htmlClient = new HttpClient();
-            var htmlResponse = await htmlClient.GetAsync(url);
-
-            if (htmlResponse != null && htmlResponse.StatusCode == HttpStatusCode.OK)
+            using (var htmlClient = new HttpClient())
             {
-                var rawHtml = await htmlResponse.Content.ReadAsStringAsync();
-                var htmlParser = new HtmlParser();
-                var html = await htmlParser.ParseDocumentAsync(rawHtml);
-                var paragraphs = html.QuerySelectorAll(querySelector)
-                    .Select(p => p.TextContent);
-                var text = string.Concat(paragraphs);
-                return text;
+                var htmlResponse = await htmlClient.GetAsync(url).ConfigureAwait(false);
+
+                if (htmlResponse != null && htmlResponse.StatusCode == HttpStatusCode.OK)
+                {
+                    var rawHtml = await htmlResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    var htmlParser = new HtmlParser();
+                    var html = await htmlParser.ParseDocumentAsync(rawHtml).ConfigureAwait(false);
+                    var paragraphs = html.QuerySelectorAll(querySelector)
+                        .Select(p => p.TextContent);
+                    var text = string.Concat(paragraphs);
+                    return text;
+                }
+                return null;
             }
-            return null;
         }
 
-        public async IAsyncEnumerable<(string link, string title, string pubDate)> ParseRSS(string rssUrl)
+        public async Task<IEnumerable<(string link, string title, string pubDate)>> ParseRSS(string rssUrl)
         {
-            var xmlClient = new HttpClient();
-            var xmlResponse = await xmlClient.GetAsync(rssUrl);
-
-            if (xmlResponse != null && xmlResponse.StatusCode == HttpStatusCode.OK)
+            using (var xmlClient = new HttpClient())
             {
-                var rawXml = await xmlResponse.Content.ReadAsStringAsync();
-                var xmlDoc = new XmlDocument();
-                xmlDoc.LoadXml(rawXml);
-                var xmlRoot = xmlDoc.DocumentElement;
-                var node = xmlRoot!.FirstChild;
-                foreach (XmlNode n in node.SelectNodes("item"))
+                var xmlResponse = await xmlClient.GetAsync(rssUrl);
+
+                if (xmlResponse != null && xmlResponse.StatusCode == HttpStatusCode.OK)
                 {
-                    var link = n.SelectSingleNode("link").InnerText;
-                    var title = n.SelectSingleNode("title").InnerText;
-                    var pubdate = n.SelectSingleNode("pubDate").InnerText;
-                    yield return (link, title, pubdate);
+                    var rawXml = await xmlResponse.Content.ReadAsStringAsync();
+                    var xmlDoc = new XmlDocument();
+                    xmlDoc.LoadXml(rawXml);
+                    var xmlRoot = xmlDoc.DocumentElement;
+                    var node = xmlRoot!.FirstChild;
+                    var list = new List<(string link, string title, string pubDate)>();
+                    foreach (XmlNode n in node.SelectNodes("item"))
+                    {
+                        var link = n.SelectSingleNode("link").InnerText;
+                        var title = n.SelectSingleNode("title").InnerText;
+                        var pubdate = n.SelectSingleNode("pubDate").InnerText;
+                        list.Add((link, title, pubdate));
+                    }
+                    return list;
                 }
+                return null;
             }
-            yield break;
         }
 
         public ParseResult ParseRaw(IHtmlDocument document)

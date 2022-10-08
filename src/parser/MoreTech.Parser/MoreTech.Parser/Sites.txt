@@ -1,4 +1,5 @@
-﻿https://www.vedomosti.ru/rss/rubric/economics
+﻿p.box-paragraph__text
+https://www.vedomosti.ru/rss/rubric/economics
 https://www.vedomosti.ru/rss/rubric/economics/macro
 https://www.vedomosti.ru/rss/rubric/economics/state_investments
 https://www.vedomosti.ru/rss/rubric/economics/global
@@ -10,3 +11,4 @@ https://www.vedomosti.ru/rss/rubric/finance/markets
 https://www.vedomosti.ru/rss/rubric/finance/players
 https://www.vedomosti.ru/rss/rubric/finance/insurance
 https://www.vedomosti.ru/rss/rubric/finance/personal_finance
+#

@@ -19,9 +19,9 @@ def main(query_type=None, role=None):
         print(res)
         return 0
     elif query_type == "preprocess":
-        print(preprocessing.preprocess())
+        preprocessing.preprocess()
     else:
-        print("Error, unknow query")
+        print("main.py ERROR : unknown query")
         return 1
 
 if __name__ == "__main__":

@@ -17,7 +17,7 @@ func Execute(Trends string, Role string) string {
 	if err != nil {
 		log.Println(err)
 	}
-	cmd := exec.Command("python", path.Join(filepath.Dir(directory), "/model", "main.py"), Trends, Role)
+	cmd := exec.Command("python3", path.Join(filepath.Dir(directory), "/model", "main.py"), Trends, Role)
 	stdout, err := cmd.StdoutPipe()
 	if err != nil {
 		panic(err)

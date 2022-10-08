@@ -1,14 +1,5 @@
 # regression classifier (input - post ; output - class probability)
 
-def train():
-    print("train model")
-
-def save():
-    print("save model")
-
-def load():
-    print("load model")
-
 def predict(text):
     print("predict")
 

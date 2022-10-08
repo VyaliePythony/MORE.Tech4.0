@@ -9,7 +9,7 @@ import (
 
 type responseDescription struct {
 	Role   string `json:"role"	`
-	Trends string `json:"newsOrTrand"	`
+	RequestType string `json:"requestType"	`
 }
 
 func addTodo(context *gin.Context) {
@@ -17,7 +17,7 @@ func addTodo(context *gin.Context) {
 	if err := context.BindJSON(&Thing); err != nil {
 		return
 	}
-	result := scripts.Execute(Thing.Trends, Thing.Role)
+	result := scripts.Execute(Thing.RequestType, Thing.Role)
 
 	// body := context.Request.Body
 	// x, _ := ioutil.ReadAll(body)

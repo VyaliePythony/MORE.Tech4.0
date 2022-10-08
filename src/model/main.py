@@ -1,8 +1,15 @@
-# model.py shell, executable by golang server. Sort posts or trends
 import sys
 import model
+import preprocessing
+import os.path
 
-def main(query_type, role):
+PARSED_DATA = "data.csv"
+DATASET = "dataset.csv"
+DATAPATH = "/go/moretech/appdata/"
+
+def main(query_type=None, role=None):
+    if not os.path.isfile(DATAPATH+DATASET):
+        preprocessing.preprocess()
     if query_type == "digest":
         res = model.digest(role)
         print(res)
@@ -11,8 +18,10 @@ def main(query_type, role):
         res = model.trends()
         print(res)
         return 0
+    elif query_type == "preprocess":
+        preprocessing.preprocess()
     else:
-        print("Error, unknow query")
+        print("main.py ERROR : unknown query")
         return 1
 
 if __name__ == "__main__":

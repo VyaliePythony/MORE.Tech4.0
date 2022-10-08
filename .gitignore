@@ -2,3 +2,4 @@
 
 env/
 redis-data/
+appdata/data.csv

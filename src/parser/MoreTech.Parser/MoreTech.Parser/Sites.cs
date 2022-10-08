@@ -14,6 +14,7 @@ namespace MoreTech.Parser
     /// селектор для выделения текста на сайте 2
     /// ссылка на RSS 1
     /// ссылка на RSS 2
+    /// 
     /// </summary>
     public static class Sites
     {
@@ -21,8 +22,8 @@ namespace MoreTech.Parser
 @"p.box-paragraph__text
 https://www.vedomosti.ru/rss/rubric/economics
 ###
-p
-https://news.ru/rss/category/post/economics";
+div.article__body > p
+https://www.mk.ru/rss/economics/index.xml";
 
     }
 }

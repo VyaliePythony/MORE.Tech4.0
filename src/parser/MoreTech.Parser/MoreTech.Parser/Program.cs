@@ -7,11 +7,8 @@ var dbAddress = Environment.GetEnvironmentVariable("REDIS-DB");
 if (dbAddress == null)
     dbAddress = "127.0.0.1:6379";
 var parsedUrls = new RedisParserCache(dbAddress);
-var pathToFile = "C:\\Users\\Skori\\Desktop\\data.csv";//"//appdata/data.csv";
+var pathToFile = "//appdata/data.csv";
 var lines = new ConcurrentBag<ParseResult>();
-
-CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
-CancellationToken token = cancelTokenSource.Token;
 
 while (true)
 {
@@ -52,18 +49,19 @@ while (true)
             var buffer = new List<Task>();
             foreach (var task in tasks)
             {
-                if (buffer.Count < 41)
+                if (buffer.Count < 40)
                 {
                     task.Start();
                     buffer.Add(task);
                     continue;
                 }
                 await Task.WhenAll(buffer);
-                buffer = new List<Task>();
                 Console.WriteLine("Resting for 10 sec");
                 Thread.Sleep(10000);
+                task.Start();
+                buffer = new List<Task>() { task };
             }
-            await Task.WhenAll(buffer);
+            await Task.WhenAll(tasks);
         }
     }
     // создание .csv файла с новостями
@@ -74,7 +72,7 @@ while (true)
         File.AppendAllText(pathToFile, newString);
     }
     Console.WriteLine($".csv file created at {pathToFile}");
-    Thread.Sleep(10000);
+    Thread.Sleep(30 * 60 * 1000);
 }
 
 

@@ -1,4 +1,4 @@
-module example.com/MORE.Tech4.0
+module example.com/api-server
 
 go 1.19
 

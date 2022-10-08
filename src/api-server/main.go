@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 
-	"example.com/MORE.Tech4.0/src/api-server/scripts"
+	"example.com/api-server/scripts"
 	"github.com/gin-gonic/gin"
 )
 

@@ -1,8 +1,14 @@
 version: "3.9"
 services:
   parser-service:
-    build: src/parser/
+    container_name: parser
+    build: src/parser/MoreTech.Parser/
+    volumes:
+      - ./appdata:/appdata
   api-server-service:
-    build: src/api-server/
+    container_name: server
     ports:
       - "8080:8080"
+    build: src/api-server/
+    volumes:
+      - ./appdata:/appdata

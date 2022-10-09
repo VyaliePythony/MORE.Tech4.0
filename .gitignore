@@ -3,3 +3,8 @@
 env/
 redis-data/
 redis.conf
+
+appdata/data.csv
+appdata/for_rec.csv
+appdata/actual_trend.csv
+appdata/inside_trend.csv

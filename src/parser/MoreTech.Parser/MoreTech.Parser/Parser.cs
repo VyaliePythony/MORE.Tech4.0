@@ -21,6 +21,12 @@ namespace MoreTech.Parser
 
     public static class Parser
     {
+        /// <summary>
+        /// Парсит указанную ссылку как html
+        /// </summary>
+        /// <param name="url">Ссылка на страницу</param>
+        /// <param name="querySelector">Селектор нужной части страницы</param>
+        /// <returns>Строку, т.е. внутренний текст выделенных с помощью querySelector тегов</returns>
         public static async Task<string> ParseHTML(string url, string querySelector)
         {
             using (var htmlClient = new HttpClient())
@@ -37,7 +43,7 @@ namespace MoreTech.Parser
                         var html = await htmlParser.ParseDocumentAsync(rawHtml).ConfigureAwait(false);
                         var paragraphs = html.QuerySelectorAll(querySelector)
                             .Select(p => p.TextContent);
-                        var text = string.Concat(paragraphs);
+                        var text = string.Concat(paragraphs).Replace("\n", "");
                         return text;
                     }
                     return null;
@@ -50,27 +56,33 @@ namespace MoreTech.Parser
             return null;
         }
 
+
+        /// <summary>
+        /// Парсит RSS канал, т.к. RSS имеет стандартную структуру, то достаточно просто взять root элемент, взять первого ребенка <rss>, затем найти все внутренние <item>, т.е. информацию с новостями
+        /// </summary>
+        /// <param name="rssUrl">Ссылка на RSS канал</param>
+        /// <returns>Кортеж из ссылки на полную новость, ее заголовка и даты публикации</returns>
         public static async Task<IEnumerable<(string link, string title, string pubDate)>> ParseRSS(string rssUrl)
         {
             using (var xmlClient = new HttpClient())
             {
-                xmlClient.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:69.0) Gecko/20100101 Firefox/69.0");
                 try
                 {
                     var xmlResponse = await xmlClient.GetAsync(rssUrl);
-
+                    
                     if (xmlResponse != null && xmlResponse.StatusCode == HttpStatusCode.OK)
                     {
-                        var rawXml = await xmlResponse.Content.ReadAsStringAsync();
+                        var rawXml = await xmlResponse.Content.ReadAsByteArrayAsync();
+                        var xml = System.Text.Encoding.UTF8.GetString(rawXml);
                         var xmlDoc = new XmlDocument();
-                        xmlDoc.LoadXml(rawXml);
+                        xmlDoc.LoadXml(xml);
                         var xmlRoot = xmlDoc.DocumentElement;
                         var node = xmlRoot!.FirstChild;
                         var list = new List<(string link, string title, string pubDate)>();
                         foreach (XmlNode n in node.SelectNodes("item"))
                         {
                             var link = n.SelectSingleNode("link").InnerText;
-                            var title = RemoveCDATA(n.SelectSingleNode("title").InnerText);
+                            var title = RemoveCDATA(n.SelectSingleNode("title").InnerText).Replace("\n", "");
                             var pubdate = n.SelectSingleNode("pubDate").InnerText;
                             list.Add((link, title, pubdate));
                         }

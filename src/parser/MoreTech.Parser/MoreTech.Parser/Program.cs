@@ -7,7 +7,7 @@ var dbAddress = Environment.GetEnvironmentVariable("REDIS-DB");
 if (dbAddress == null)
     dbAddress = "127.0.0.1:6379";
 var parsedUrls = new RedisParserCache(dbAddress);
-var pathToFile = "//appdata/data.csv";
+var pathToFile = "//appdata//data.csv";
 var lines = new ConcurrentBag<ParseResult>();
 
 while (true)
@@ -64,11 +64,12 @@ while (true)
             await Task.WhenAll(tasks);
         }
     }
+    Thread.Sleep(2000);
     // создание .csv файла с новостями
     File.WriteAllText(pathToFile, "");
     foreach (var line in lines)
     {
-        var newString = $"\"{line.Url}\";\"{line.Title}\";\"{line.Text}\";\"{line.PublicationDate}\"\n";
+        var newString = $"\"{line.Url}\";\"{line.Title.Replace(';', ',')}\";\"{line.Text.Replace(';', ',')}\";\"{line.PublicationDate}\"\n";
         File.AppendAllText(pathToFile, newString);
     }
     Console.WriteLine($".csv file created at {pathToFile}");

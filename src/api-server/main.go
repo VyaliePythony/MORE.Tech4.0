@@ -23,7 +23,7 @@ func addTodo(context *gin.Context) {
 	// x, _ := ioutil.ReadAll(body)
 
 	// result := Execute(string(x))
-	context.IndentedJSON(http.StatusCreated, result)
+	context.String(http.StatusCreated, result)
 }
 
 func main() {

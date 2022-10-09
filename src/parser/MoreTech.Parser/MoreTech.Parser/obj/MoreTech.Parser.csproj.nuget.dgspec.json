@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Skori\\Source\\Repos\\MORE.Tech\\src\\parser\\MoreTech.Parser\\MoreTech.Parser\\MoreTech.Parser.csproj": {}
+    "C:\\Users\\Skori\\source\\repos\\MORE.Tech\\src\\parser\\MoreTech.Parser\\MoreTech.Parser\\MoreTech.Parser.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Skori\\Source\\Repos\\MORE.Tech\\src\\parser\\MoreTech.Parser\\MoreTech.Parser\\MoreTech.Parser.csproj": {
+    "C:\\Users\\Skori\\source\\repos\\MORE.Tech\\src\\parser\\MoreTech.Parser\\MoreTech.Parser\\MoreTech.Parser.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Skori\\Source\\Repos\\MORE.Tech\\src\\parser\\MoreTech.Parser\\MoreTech.Parser\\MoreTech.Parser.csproj",
+        "projectUniqueName": "C:\\Users\\Skori\\source\\repos\\MORE.Tech\\src\\parser\\MoreTech.Parser\\MoreTech.Parser\\MoreTech.Parser.csproj",
         "projectName": "MoreTech.Parser",
-        "projectPath": "C:\\Users\\Skori\\Source\\Repos\\MORE.Tech\\src\\parser\\MoreTech.Parser\\MoreTech.Parser\\MoreTech.Parser.csproj",
+        "projectPath": "C:\\Users\\Skori\\source\\repos\\MORE.Tech\\src\\parser\\MoreTech.Parser\\MoreTech.Parser\\MoreTech.Parser.csproj",
         "packagesPath": "C:\\Users\\Skori\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Skori\\Source\\Repos\\MORE.Tech\\src\\parser\\MoreTech.Parser\\MoreTech.Parser\\obj\\",
+        "outputPath": "C:\\Users\\Skori\\source\\repos\\MORE.Tech\\src\\parser\\MoreTech.Parser\\MoreTech.Parser\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Skori\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -43,6 +43,14 @@
             "AngleSharp": {
               "target": "Package",
               "version": "[0.17.1, )"
+            },
+            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+              "target": "Package",
+              "version": "[1.15.1, )"
+            },
+            "StackExchange.Redis": {
+              "target": "Package",
+              "version": "[2.6.66, )"
             }
           },
           "imports": [

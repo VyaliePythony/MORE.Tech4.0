@@ -1,28 +1,38 @@
 import sys
-import model
-import preprocessing
+from model import Model
+from inside import Inside
 import os.path
+import json
+import pandas as pd
 
 PARSED_DATA = "data.csv"
-DATASET = "dataset.csv"
-DATAPATH = "/go/moretech/appdata/"
+DATASET = "for_rec.csv"
+DATAPATH = "/appdata/"
 
-def main(query_type=None, role=None):
+postModel = Model()
+insider = Inside()
+
+def main(query_type, role):
     if not os.path.isfile(DATAPATH+DATASET):
-        preprocessing.preprocess()
+        postModel.update(PARSED_DATA)
     if query_type == "digest":
-        res = model.digest(role)
-        print(res)
-        return 0
+        df = postModel.news(role, 3)
+        res = json.dumps(df.to_dict('records'), ensure_ascii=False)
     elif query_type == "trends":
-        res = model.trends()
-        print(res)
-        return 0
+        trends = postModel.trends()
+        df = pd.DataFrame(data=trends.to_list(), columns=['trends'])
+        res = json.dumps(df.to_dict('records'), ensure_ascii=False)
     elif query_type == "preprocess":
-        preprocessing.preprocess()
+        postModel.update(PARSED_DATA)
+        res = "data preprocessed"
+    elif query_type == "insight":
+        res = insider.get_inside(role)
+        res = json.dumps(res.to_dict('records'), ensure_ascii=False)
     else:
         print("main.py ERROR : unknown query")
         return 1
+    print(res)
+    return 0
 
 if __name__ == "__main__":
     main(sys.argv[1],sys.argv[2])

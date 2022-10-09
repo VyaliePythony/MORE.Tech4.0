@@ -19,11 +19,19 @@ namespace MoreTech.Parser
     public static class Sites
     {
         public static string All =
-@"p.box-paragraph__text
+@"div.article__content>p
+https://www.klerk.ru/export/news.rss
+###
+div.tip-news>p
+https://buh.ru/rss/?chanel=news
+###
+p.box-paragraph__text
 https://www.vedomosti.ru/rss/rubric/economics
 ###
 div.article__body > p
-https://www.mk.ru/rss/economics/index.xml";
+https://www.mk.ru/rss/economics/index.xml
+
+";
 
     }
 }

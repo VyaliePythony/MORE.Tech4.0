@@ -1,5 +1,6 @@
 import sys
 from model import Model
+from inside import Inside
 import os.path
 import json
 import pandas as pd
@@ -9,6 +10,7 @@ DATASET = "for_rec.csv"
 DATAPATH = "/appdata/"
 
 postModel = Model()
+insider = Inside()
 
 def main(query_type, role):
     if not os.path.isfile(DATAPATH+DATASET):
@@ -23,6 +25,9 @@ def main(query_type, role):
     elif query_type == "preprocess":
         postModel.update(PARSED_DATA)
         res = "data preprocessed"
+    elif query_type == "insight":
+        res = insider.get_inside(role)
+        res = json.dumps(res.to_dict('records'), ensure_ascii=False)
     else:
         print("main.py ERROR : unknown query")
         return 1

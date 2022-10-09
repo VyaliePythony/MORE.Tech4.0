@@ -2,6 +2,8 @@ from typing import List
 from text import Natasha
 import pandas as pd
 
+DATAPATH = "/appdata/"
+
 available_hipotize = [
     'Увеличение импорта товара в индию повысит маржинальность бизнеса'
 ]
@@ -45,17 +47,13 @@ class Inside:
         hip_text = input("Enter hipotize below\n")
         return InsideUtils.lemmatize(hip_text)
 
-    def get_inside(self):
-        answer = self.choice_hipotize()
-        if str(answer) == '1':
-            lemma_hip = self.enter_get_hipotize()
-        else:
+    def get_inside(self, choice):
+        if choice == "empty":
             lemma_hip = InsideUtils.lemmatize(available_hipotize[0])
-            print("H0: ", available_hipotize[0], end = '\n\n\n')
-
+            # print("H0: ", available_hipotize[0], end='\n\n\n')
+        else:
+            lemma_hip = InsideUtils.lemmatize(choice)
         # read inside_trend
-        inside_trend = pd.read_csv('inside_trend.csv', index_col=False)
+        inside_trend = pd.read_csv(DATAPATH+'inside_trend.csv', index_col=False)
         res = InsideUtils.find_near(lemma_hip, inside_trend)
-        print("Я котик! У меня лапки и это все что я смог проанализировать :)", end = '\n\n')
-        for (trend, value) in res.values:
-            print(trend, " Вероятность успеха гипотезы = ", value)
+        return pd.DataFrame({'trend': res['trend'], 'metric': res['tfidf']})

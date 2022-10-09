@@ -7,7 +7,7 @@ Parse, analyze and recommend news
 
 ## Dependencies
 ```
-pip3 install -r requirements.txt
+pip3 install -r requirments.txt
 ```
 # USAGE
 ## Deploy
@@ -47,7 +47,7 @@ Project Organization
     │
     ├── appdata            <- Volume with data for services
     │
-    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
+    ├── requirments.txt   <- The requirements file for reproducing the analysis environment, e.g.
     │                         generated with `pip freeze > requirements.txt`
     └──├─ src              <- Source code for use in this project.
        │

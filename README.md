@@ -3,6 +3,8 @@ Digests and trends for specific business roles
 
 Parse, analyze and recommend news
 
+![alt text](appdata/arch.png)
+
 ## Dependencies
 ```
 pip3 install -r requirements.txt
@@ -13,6 +15,7 @@ API server on host:8080 (port forwarded)
 ```
 docker compose up -d
 ```
+ACHTUNG! Take a cup of tea for a moment, parser must work alone for a moment to accumulate data for API server service 
 
 ## Test API server via test.py
 ```

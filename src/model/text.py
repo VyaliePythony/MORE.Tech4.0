@@ -14,7 +14,7 @@ import nltk
 from nltk.corpus import stopwords
 nltk.download('stopwords', quiet=True)
 
-noise = stopwords.words('russian') + list(punctuation)
+noise = stopwords.words('russian') + list(punctuation) + list('«»')
 
 DATAPATH = "/appdata/"
 
